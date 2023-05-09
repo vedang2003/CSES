@@ -1,1 +1,0 @@
-{"name":"Local: incanity","url":"/home/vedang/Documents/CSES/incanity.cpp","tests":[{"id":1677723407446,"input":"1\n8\nAAANAANA","output":"1 2 3 1 1 1 1 2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/vedang/Documents/CSES/incanity.cpp","group":"local","local":true}
