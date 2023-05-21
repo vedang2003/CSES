@@ -33,20 +33,24 @@ void solve()
     string str;
     cin>>str;
 
-    int c=1,ans=0;
-    rep(i,0,str.size()){
+    int ans=0,c=1;
+    rep(i,0,str.size()-1){
         if(str[i]==str[i+1]){
             c++;
         }
         else{
-            ans=max(ans,c);
+            ans=max(c,ans);
             c=1;
         }
-        }
+    }
+    ans=max(ans,c);
     cout<<ans;
-    //c=1
-    //l=A c=2
-    //
+    //ATTCGGGA
+    //c=1 ans=1
+    //c=2 ans=2
+    //c=1 ans=1
+    //c=3 ans=3
+    //c=1 ans=1
 }
 
 int main()
