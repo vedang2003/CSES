@@ -45,35 +45,22 @@ ll pwr(int a, int b) {
 
 void solve()
 {
-    ll y,x;
-    cin>>y>>x;
-    ll ans=0;
-    if(y<x){
-        if(x%2==1){
-            ans=x*x-y+1;
-        }
-        else{
-            ans=(x-1)*(x-1)+y;
-        }
+    int n;
+    cin>>n;
+    for(ll k=1;k<=n;k++){
+        ll total=((k*k-1)*(k*k))/2;
+        ll attack=4*(k-1)*(k-2);
+        ll ans=total-attack;
+        cout<<ans<<endl;
     }
-    else{
-        if(y%2==1){
-            ans=(y-1)*(y-1)+x;
-        }
-        else{
-            ans=y*y-x+1;
-        }
-    }
-    cout<<ans;
 }
-//1 4 5 16 17
-//1 4 9-4 16 25-8
 
-//11 12 13 14 15
-//21 22 23 24 25
-//31 32 33 34 35
-//41 42 43 44 45
-//51 52 53 54 55
+//total postiions->n^2*(n62-1)
+//attack postiotns->4*(n-1)*(n-2)
+//2*3:2*(n-1)*(n-2)
+//3*2:2*(n-2)*(n-1)
+//In each 2*3|3*2 area there are 2 ways
+//for knights to attack each other
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -85,7 +72,7 @@ int main()
    freopen("output.txt", "w", stdout);
     #endif */
     int tc = 1;
-    cin>>tc;
+    //cin>>tc;
     while (tc--)
     {
         solve();

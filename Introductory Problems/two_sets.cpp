@@ -45,35 +45,55 @@ ll pwr(int a, int b) {
 
 void solve()
 {
-    ll y,x;
-    cin>>y>>x;
-    ll ans=0;
-    if(y<x){
-        if(x%2==1){
-            ans=x*x-y+1;
-        }
-        else{
-            ans=(x-1)*(x-1)+y;
+    ll n;
+    cin>>n;
+    ll sum=n*(n+1)/2;
+    if(sum%2==1){
+        no;
+        return;
+    }
+    //n=0,3mod4
+    vector<int> v1,v2;
+    if(n%4==0){
+        for(int i=0;i<=(n-1)/4;i++){
+            v1.pb(4*i+1);
+            v1.pb(4*i+4);
+            v2.pb(4*i+2);
+            v2.pb(4*i+3);
         }
     }
     else{
-        if(y%2==1){
-            ans=(y-1)*(y-1)+x;
-        }
-        else{
-            ans=y*y-x+1;
+        v1.pb(1);
+        v1.pb(2);
+        v2.pb(3);
+        for(int i=1;i<=(n-1)/4;i++){
+            v1.pb(4*i);
+            v1.pb(4*i+3);
+            v2.pb(4*i+1);
+            v2.pb(4*i+2);
         }
     }
-    cout<<ans;
-}
-//1 4 5 16 17
-//1 4 9-4 16 25-8
+    yes<<endl;
+    cout<<v1.size()<<endl;
+    for(int x:v1){
+        cout<<x<<" ";
+    }
+    cout<<endl;
+    cout<<v2.size()<<endl;
+    for(int x:v2){
+        cout<<x<<" ";
+    }
 
-//11 12 13 14 15
-//21 22 23 24 25
-//31 32 33 34 35
-//41 42 43 44 45
-//51 52 53 54 55
+}
+//n%4==0:
+//1 2 3 4 5 6 7 8 
+//1 3 6 10 15 21 28 36
+//n%4==3:
+//1 2 3 4 5 6 7
+//1,2->one set
+//3->other set
+//rest numbers fit in
+
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -85,7 +105,7 @@ int main()
    freopen("output.txt", "w", stdout);
     #endif */
     int tc = 1;
-    cin>>tc;
+    //cin>>tc;
     while (tc--)
     {
         solve();
