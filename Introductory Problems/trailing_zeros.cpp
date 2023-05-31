@@ -32,22 +32,26 @@ ll gcd(int a, int b) {
     return a; 
     return gcd(b, a % b);
 }//eucl
-ll pwr(ll a,ll b) {
+ll pwr(int a, int b) {
     a %= MOD; 
-    ll res = 1; 
+    int res = 1; 
     while (b > 0) {
         if (b & 1) res = res * a % MOD; 
         a = a * a % MOD; 
         b >>= 1;
-    } 
-    return res;
+        } 
+        return res;
 }
 
 void solve()
 {
     ll n;
     cin>>n;
-    ll ans=pwr(2,n);
+    ll ans=0;
+    //count the factors of 5 in n!
+    for(ll i=5;i<=n;i*=5){
+        ans+=n/i;
+    }
     cout<<ans;
 }
 

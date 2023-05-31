@@ -32,23 +32,37 @@ ll gcd(int a, int b) {
     return a; 
     return gcd(b, a % b);
 }//eucl
-ll pwr(ll a,ll b) {
+ll pwr(int a, int b) {
     a %= MOD; 
-    ll res = 1; 
+    int res = 1; 
     while (b > 0) {
         if (b & 1) res = res * a % MOD; 
         a = a * a % MOD; 
         b >>= 1;
-    } 
-    return res;
+        } 
+        return res;
 }
 
 void solve()
 {
-    ll n;
+    int n;
     cin>>n;
-    ll ans=pwr(2,n);
-    cout<<ans;
+    int p[20];
+    ll ans=0,s=0;
+    for(int i=0;i<n;i++){
+        cin>>p[i];
+        s+=p[i];
+    }
+    for(int i=0;i<(1<<n);++i){
+        ll cs=0;
+        for(int j=0;j<n;++j){
+            if((i>>j)&1) 
+            cs+=p[j];
+        }
+        if(cs<=s/2)
+        ans=max(ans,cs);
+    }
+    cout<<s-2*ans; 
 }
 
 int main()

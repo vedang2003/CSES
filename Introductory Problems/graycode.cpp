@@ -32,23 +32,31 @@ ll gcd(int a, int b) {
     return a; 
     return gcd(b, a % b);
 }//eucl
-ll pwr(ll a,ll b) {
+ll pwr(int a, int b) {
     a %= MOD; 
-    ll res = 1; 
+    int res = 1; 
     while (b > 0) {
         if (b & 1) res = res * a % MOD; 
         a = a * a % MOD; 
         b >>= 1;
-    } 
-    return res;
+        } 
+        return res;
 }
 
 void solve()
 {
-    ll n;
+    int n;
     cin>>n;
-    ll ans=pwr(2,n);
-    cout<<ans;
+
+    //power of 2
+    for(int i=0;i<(1<<n);i++){
+        int val=(i^(i>>1));
+        //cout<<val<<" ";
+        bitset<32> num(val);
+
+        string s=num.to_string();
+        cout<<s.substr(32-n)<<endl;
+    }
 }
 
 int main()

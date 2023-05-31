@@ -32,22 +32,50 @@ ll gcd(int a, int b) {
     return a; 
     return gcd(b, a % b);
 }//eucl
-ll pwr(ll a,ll b) {
+ll pwr(int a, int b) {
     a %= MOD; 
-    ll res = 1; 
+    int res = 1; 
     while (b > 0) {
         if (b & 1) res = res * a % MOD; 
         a = a * a % MOD; 
         b >>= 1;
-    } 
-    return res;
+        } 
+        return res;
 }
 
 void solve()
 {
-    ll n;
-    cin>>n;
-    ll ans=pwr(2,n);
+    string s;
+    cin>>s;
+    int c[26]={0};
+    for(auto ch:s){
+        c[ch-'A']++;
+    }
+
+    int odd=0;
+    for(int i=0;i<26;i++){
+        odd+=c[i]&1;
+    }
+    string t,ans;
+    if(odd>1){
+        cout<<"NO SOLUTION";
+        return;
+    }
+    for(int i=0;i<26;i++){
+        if(c[i]&1)
+           for(int j=0;j<c[i];j++){
+               t+=(char)('A'+i);
+        }
+    }
+    string left;
+    for(int i=0;i<26;i++){
+        if(c[i]&1^1)
+        for(int j=0;j<c[i]/2;j++){
+            left+=(char)('A'+i);
+        }
+    }
+    string right=string(left.rbegin(),left.rend());
+    ans=left+t+right;
     cout<<ans;
 }
 

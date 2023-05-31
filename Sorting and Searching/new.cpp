@@ -32,23 +32,20 @@ ll gcd(int a, int b) {
     return a; 
     return gcd(b, a % b);
 }//eucl
-ll pwr(ll a,ll b) {
+ll pwr(int a, int b) {
     a %= MOD; 
-    ll res = 1; 
+    int res = 1; 
     while (b > 0) {
         if (b & 1) res = res * a % MOD; 
         a = a * a % MOD; 
         b >>= 1;
-    } 
-    return res;
+        } 
+        return res;
 }
 
 void solve()
 {
-    ll n;
-    cin>>n;
-    ll ans=pwr(2,n);
-    cout<<ans;
+    
 }
 
 int main()
@@ -62,7 +59,7 @@ int main()
    freopen("output.txt", "w", stdout);
     #endif */
     int tc = 1;
-    //cin>>tc;
+    cin>>tc;
     while (tc--)
     {
         solve();

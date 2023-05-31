@@ -32,22 +32,58 @@ ll gcd(int a, int b) {
     return a; 
     return gcd(b, a % b);
 }//eucl
-ll pwr(ll a,ll b) {
+ll pwr(int a, int b) {
     a %= MOD; 
-    ll res = 1; 
+    int res = 1; 
     while (b > 0) {
         if (b & 1) res = res * a % MOD; 
         a = a * a % MOD; 
         b >>= 1;
-    } 
-    return res;
+        } 
+        return res;
 }
+string s;
+bool vis[7][7];
+int ans;
 
+bool emp(int i,int j){
+    return i>=0 and i<7 and j<7 and j>=0 and !vis[i][j];
+}
+void dfs(int i,int j,int a=0){
+    if(i==6 and j==6){
+        if(a==48){
+            ans++; 
+        }
+        return;
+    }
+    vis[i][j]=1;
+    if(s[a]=='?' || s[a]=='L'){
+        if(j && !vis[i][j-11]){
+            if(!(!emp(i,j-2)&&emp(i+1,j-1)))
+            dfs(i,j-1,a+1);
+        }
+    }
+    if(s[a]=='?' || s[a]=='R'){
+        if(j<6 && !vis[i][j+1]){
+            dfs(i,j+1,a+1);
+        }
+    }
+    if(s[a]=='?' || s[a]=='U'){
+        if(i && !vis[i-1][j]){
+            dfs(i-1,j,a+1);
+        }
+    }
+    if(s[a]=='?' || s[a]=='D'){
+        if(i<6 && !vis[i+1][j]){
+            dfs(i+1,j+1,a+1);
+        }
+    }
+    vis[i][j]=0;
+}
 void solve()
 {
-    ll n;
-    cin>>n;
-    ll ans=pwr(2,n);
+    cin>>s;
+    dfs(0,0);
     cout<<ans;
 }
 

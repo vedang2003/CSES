@@ -32,23 +32,31 @@ ll gcd(int a, int b) {
     return a; 
     return gcd(b, a % b);
 }//eucl
-ll pwr(ll a,ll b) {
+ll pwr(int a, int b) {
     a %= MOD; 
-    ll res = 1; 
+    int res = 1; 
     while (b > 0) {
         if (b & 1) res = res * a % MOD; 
         a = a * a % MOD; 
         b >>= 1;
-    } 
-    return res;
+        } 
+        return res;
 }
 
 void solve()
 {
-    ll n;
-    cin>>n;
-    ll ans=pwr(2,n);
-    cout<<ans;
+    string s;
+    cin>>s;
+    sort(all(s));
+    vector<string> ans;
+    do{
+        ans.push_back(s);
+    }while(next_permutation(all(s)));
+
+    cout<<ans.size()<<nl;
+    for(auto s:ans){
+        cout<<s<<nl;
+    }
 }
 
 int main()
