@@ -45,27 +45,27 @@ ll pwr(int a, int b) {
 
 void solve()
 {
-    ll n,m,k;
-    cin>>n>>m>>k;
-
-    vector<ll> a(n),b(m);
-    vin(a);
-    vin(b);
-
-    sort(all(a));
-    sort(all(b));
-    int i=0,j=0;
-    ll ans=0;
-    while(i<n){
-        while(j<m and b[j]<a[i]-k) j++;
-        if(j<m and b[j]<=a[i]+k){
-            ans++;
-            j++;
-        }
-        i++;
+    int n,m;
+    cin>>n>>m;
+    multiset<ll,greater<int>> tcs;
+    rep(i,0,n){
+        int h;
+        cin>>h;
+        tcs.insert(h);
     }
-    cout<<ans;
-    //a[i]-k<=b[i]<=a[i]+k
+
+    rep(i,0,m){
+        int t;
+        cin>>t;
+        auto it=tcs.lower_bound(t);
+        if(it==tcs.end()){
+            cout<<-1<<endl;
+        }
+        else{
+            cout<<*it<<endl;
+            tcs.erase(it);
+        }
+    }
 }
 
 int main()

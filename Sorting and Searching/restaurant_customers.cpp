@@ -45,27 +45,7 @@ ll pwr(int a, int b) {
 
 void solve()
 {
-    ll n,m,k;
-    cin>>n>>m>>k;
-
-    vector<ll> a(n),b(m);
-    vin(a);
-    vin(b);
-
-    sort(all(a));
-    sort(all(b));
-    int i=0,j=0;
-    ll ans=0;
-    while(i<n){
-        while(j<m and b[j]<a[i]-k) j++;
-        if(j<m and b[j]<=a[i]+k){
-            ans++;
-            j++;
-        }
-        i++;
-    }
-    cout<<ans;
-    //a[i]-k<=b[i]<=a[i]+k
+    
 }
 
 int main()
@@ -79,7 +59,7 @@ int main()
    freopen("output.txt", "w", stdout);
     #endif */
     int tc = 1;
-    //cin>>tc;
+    cin>>tc;
     while (tc--)
     {
         solve();
@@ -88,3 +68,4 @@ int main()
     return 0;
 }
 
+ 
