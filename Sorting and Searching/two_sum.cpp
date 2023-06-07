@@ -14,7 +14,7 @@ const int N=1e7+1;
 #define pb push_back
 #define pf push_front
 #define ppb pop_back
-#define mpp ma ke_pair
+#define mp ma ke_pair
 #define pii pair<int,int>
 #define all(v) v.begin(),v.end()
 #define rep(i,a,n) for(int i=a;i<n;i++)
@@ -45,30 +45,27 @@ ll pwr(int a, int b) {
 
 void solve()
 {
-    int n;
-    cin>>n;
-    vector<ll> a(2*n);
-    for(int i=0;i<n;i++){
-        a[i]=(i*(i+1))/2;
-    }
-    int k=0;
-    for(int i=2*n-1;i>=n;i--){
-        a[i]=n*n-k*(k+1)/2;
-        k++;
-    }
-    for(int i=0;i<2*n;i++) cout<<a[i]<<" ";
-    cout<<endl;
-    int q;
-    cin>>q;
-    while(q--){
+    int n,x;
+    cin>>n>>x;
+    vector<ll> arr(n);
+    rep(i,0,n){
         ll x;
         cin>>x;
-        ll ans=lower_bound(a.begin(),a.end(),x)-a.begin();
-        cout<<ans<<endl;
+        arr[i]=x;
     }
+
+    map<ll,ll> map;
+    for(int i=0;i<n;i++){
+        int comp=x-arr[i];
+        if(map.find(comp)!=map.end()){
+            cout<<i+1<<" "<<map[comp];
+            return;
+        }
+        map[arr[i]]=i+1;
+    }
+    cout<<"IMPOSSIBLE";
 }
-//1 3 6 10 15 21 28 36 45
-//1 3                      
+
 int main()
 {
     ios_base::sync_with_stdio(false);

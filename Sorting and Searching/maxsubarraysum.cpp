@@ -47,28 +47,18 @@ void solve()
 {
     int n;
     cin>>n;
-    vector<ll> a(2*n);
+
+    ll cur_sum=0,max_sum=-1e9;
     for(int i=0;i<n;i++){
-        a[i]=(i*(i+1))/2;
+        ll a;
+        cin>>a;
+        cur_sum=cur_sum+a;
+        max_sum=max(max_sum,cur_sum);
+        if(cur_sum<0) cur_sum=0;
     }
-    int k=0;
-    for(int i=2*n-1;i>=n;i--){
-        a[i]=n*n-k*(k+1)/2;
-        k++;
-    }
-    for(int i=0;i<2*n;i++) cout<<a[i]<<" ";
-    cout<<endl;
-    int q;
-    cin>>q;
-    while(q--){
-        ll x;
-        cin>>x;
-        ll ans=lower_bound(a.begin(),a.end(),x)-a.begin();
-        cout<<ans<<endl;
-    }
+    cout<<max_sum;
 }
-//1 3 6 10 15 21 28 36 45
-//1 3                      
+
 int main()
 {
     ios_base::sync_with_stdio(false);

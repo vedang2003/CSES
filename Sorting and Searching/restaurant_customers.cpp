@@ -45,8 +45,27 @@ ll pwr(int a, int b) {
 
 void solve()
 {
-    
+    int n;
+    cin>>n;
+    vector<pii> a(n);
+    rep(i,0,n){
+        int x,y;
+        cin>>x>>y;
+        a.push_back({x,1});
+        a.push_back({y,-1});
+    }
+    sort(all(a));
+
+    ll count=0,ans=0;
+    for(auto it:a){
+        count+=it.second;
+        ans=max(ans,count);
+    }
+    cout<<ans;
 }
+//2 4
+//3 9
+//5 8
 
 int main()
 {
@@ -59,7 +78,7 @@ int main()
    freopen("output.txt", "w", stdout);
     #endif */
     int tc = 1;
-    cin>>tc;
+    //cin>>tc;
     while (tc--)
     {
         solve();
